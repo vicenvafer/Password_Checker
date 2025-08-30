@@ -9,8 +9,6 @@ def request_api_data(query_char):
         raise RuntimeError(f"Error fetching {res.status_code}, check API and try again.")
     return res
 
-def read_response(response):
-    response.text
 
 def get_passwords_leaks_count(hashes, hash_to_check):
     hashes= (line.split(":") for line in hashes.text.splitlines())
@@ -38,5 +36,5 @@ def main(group_of_passwords):
             print(f"{starred_password} was NOT found. Good job, that´s a proper password right there.")
     return "Done!"
 
-
-main(sys.argv[1:])
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))
